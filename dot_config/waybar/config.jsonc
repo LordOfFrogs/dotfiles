@@ -8,17 +8,18 @@
     // Choose the order of the modules
     "modules-left": [
         "hyprland/workspaces",
-        "hyprland/mode",
+        "hyprland/submap",
         "custom/media"
     ],
-    "modules-center": [
-        "hyprland/window"
-    ],
+    // "modules-center": [
+        // "hyprland/window"
+    // ],
     "modules-right": [
         "mpd",
         // "idle_inhibitor",
         "pulseaudio",
-        "network",
+        // "network",
+        // "bluetooth",
         "power-profiles-daemon",
         "cpu",
         "memory",
@@ -26,29 +27,70 @@
         // "backlight",
         // "keyboard-state",
         // "hyprland/language",
+        "tray",
         "battery",
         // "battery#bat2",
         "clock",
-        "tray",
         "custom/power"
     ],
     // Modules configuration
-    // "hyprland/workspaces": {
-    //     "disable-scroll": true,
-    //     "all-outputs": true,
-    //     "warp-on-scroll": false,
-    //     "format": "{name}: {icon}",
-    //     "format-icons": {
-    //         "1": "",
-    //         "2": "",
-    //         "3": "",
-    //         "4": "",
-    //         "5": "",
-    //         "urgent": "",
-    //         "focused": "",
-    //         "default": ""
-    //     }
-    // },
+    "hyprland/workspaces": {
+        "format": "{icon}",
+        "on-click": "activate",
+        "persistent-workspaces": {
+          "*": 5
+        },
+        "window-rewrite-default": "󰊠",
+        "window-rewrite": {
+          // --- Work ---
+          "kitty": "󰆍",
+          "onlyoffice": "󰏆",
+          "firefox": "",
+          "code": "󰨞",
+          "azahar": "",
+          "obsidian": "󰹕",
+          "mousepad": "󱓧",
+          // --- Apps ---
+          "discord": "",
+          "spotify": "",
+          "org.kde.kdeconnect.app": "󰦉",
+          "org.qbittorrent.qBittorrent": "󰘿",
+          // --- Graphics & Visual ---
+          "xdg-desktop-portal-gtk": "",
+          "thunar": "",
+          "yazi": "󰇥",
+          "imv": "󰄄",
+          "swappy": "󰄄",
+          "org.gnome.FileRoller": "",
+          "vlc": "󰕼",
+          "mpv": "󰕼",
+          // --- System ---
+          "blueman-manager": "",
+          "pavucontrol": "󱕂",
+          "nm-connection-editor": "󰐻",
+          // --- Tool ---
+          "nwg-look": "󰒓",
+          "qt5ct": "󰒓",
+          "qt6ct": "󰒓",
+          "designer": "󰒓",
+          "linguist": "󰒓",
+          "assistant": "󰒓",
+          "pixeltool": "󰒓",
+          "qdbusviewer": "󰒓"
+        },
+        "format-icons": {
+          // "active": "󰮯",
+          // "special": "󱁂",
+          // "default": "󰊠",
+          // "urgent": "󰧵",
+          "active": "",
+          "special": "󰊠",
+          "default": "",
+          "urgent": ""
+        },
+        "show-special": true,
+        "all-outputs": true
+    },
     "keyboard-state": {
         "numlock": true,
         "capslock": true,
@@ -57,9 +99,6 @@
             "locked": "",
             "unlocked": ""
         }
-    },
-    "hyprland/submap": {
-        "format": "<span style=\"italic\">{}</span>"
     },
     "hyprland/scratchpad": {
         "format": "{icon} {count}",
@@ -109,9 +148,11 @@
         }
     },
     "clock": {
+        "interval": 1,
+        "format": "{:%a %d %H:%M:%S}",
         // "timezone": "America/New_York",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-        "format-alt": "{:%Y-%m-%d}"
+        // "format-alt": "{:%Y-%m-%d}"
     },
     "cpu": {
         "format": "{usage}% ",
@@ -172,13 +213,24 @@
         // "format-alt": "{ifname}: {ipaddr}/{cidr}"
         "on-click": "hyprltm-net"
     },
+    "bluetooth": {
+        "format": "󰂯",
+        "format-connected": "󰂱",
+        "format-disabled": "󰂲",
+        "tooltip-format": "{controller_alias} {status}",
+        "tooltip-format-connected": "󰐻  {num_connections} Connected:\n{device_enumerate}",
+        "tooltip-format-enumerate-connected-battery": "󰂱  {device_alias} (󰠠  {device_battery_percentage}%)",
+        "on-click": "blueman-applet",
+        "on-click-right": "rfkill toggle bluetooth"
+    },
     "pulseaudio": {
         // "scroll-step": 1, // %, can be a float
         "format": "{volume}% {icon} {format_source}",
         "format-bluetooth": "{volume}% {icon} {format_source}",
         "format-bluetooth-muted": " {icon} {format_source}",
         "format-muted": " {format_source}",
-        "format-source": "{volume}% ",
+        // "format-source": "{volume}% ",
+        "format-source": "",
         "format-source-muted": "",
         "format-icons": {
             "headphone": "",
@@ -204,15 +256,16 @@
         // "exec": "$HOME/.config/waybar/mediaplayer.py --player spotify 2> /dev/null" // Filter player based on name
     },
     "custom/power": {
-        "format" : "⏻ ",
-		"tooltip": false,
-		"menu": "on-click",
-		"menu-file": "$HOME/.config/waybar/power_menu.xml", // Menu file in resources folder
-		"menu-actions": {
-			"shutdown": "shutdown",
-			"reboot": "reboot",
-			"suspend": "systemctl suspend",
-			"hibernate": "systemctl hibernate"
-		}
+        "format" : "⏻  ",
+        "tooltip": false,
+        "on-click": "bash $HOME/.local/bin/power-menu"
+		// "menu": "on-click",
+		// "menu-file": "$HOME/.config/waybar/power_menu.xml", // Menu file in resources folder
+		// "menu-actions": {
+		// 	"shutdown": "shutdown",
+		// 	"reboot": "reboot",
+		// 	"suspend": "systemctl suspend",
+		// 	"hibernate": "systemctl hibernate"
+		// }
     }
 }
