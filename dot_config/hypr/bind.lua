@@ -25,6 +25,9 @@ hl.bind(mainMod .. " + SHIFT + space", hl.dsp.exec_cmd(execMenu))
 hl.bind(mainMod .. " + P", hl.dsp.window.pseudo())
 hl.bind(mainMod .. " + A", hl.dsp.layout("togglesplit")) -- dwindle only
 hl.bind(mainMod .. " + B", hl.dsp.exec_cmd(browser))
+hl.bind("PRINT", hl.dsp.exec_cmd("hyprshot -zm region"))
+hl.bind("SHIFT+PRINT", hl.dsp.exec_cmd("hyprshot -m output"))
+hl.bind(mainMod .. " + SHIFT + C", hl.dsp.exec_cmd("swaync-client -C"))
 
 -- Move focus with mainMod + arrows/hjkl
 hl.bind(mainMod .. " + left", hl.dsp.focus({ direction = "left" }))

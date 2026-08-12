@@ -28,6 +28,7 @@
         // "keyboard-state",
         // "hyprland/language",
         "tray",
+        "custom/notification",
         "battery",
         // "battery#bat2",
         "clock",
@@ -258,7 +259,7 @@
     "custom/power": {
         "format" : "⏻  ",
         "tooltip": false,
-        "on-click": "wofi-power-menu"
+        "on-click": "bash $HOME/.local/bin/power-menu"
 		// "menu": "on-click",
 		// "menu-file": "$HOME/.config/waybar/power_menu.xml", // Menu file in resources folder
 		// "menu-actions": {
@@ -267,5 +268,25 @@
 		// 	"suspend": "systemctl suspend",
 		// 	"hibernate": "systemctl hibernate"
 		// }
-    }
+    },
+    "custom/notification": {
+      "tooltip": true,
+      "format": " {icon} ",
+      "format-icons": {
+        "notification": "󱅫",
+        "none": "󰂜",
+        "dnd-notification": "󰂠",
+        "dnd-none": "󰪓",
+        "inhibited-notification": "󰂛",
+        "inhibited-none": "󰪑",
+        "dnd-inhibited-notification": "󰂛",
+        "dnd-inhibited-none": "󰪑"
+      },
+      "return-type": "json",
+      "exec-if": "which swaync-client",
+      "exec": "swaync-client -swb",
+      "on-click": "swaync-client -t -sw",
+      "on-click-right": "swaync-client -d -sw",
+      "escape": true
+    },
 }
