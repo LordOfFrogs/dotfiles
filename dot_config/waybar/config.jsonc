@@ -180,11 +180,11 @@
             "warning": 30,
             "critical": 15
         },
-        "format": "{capacity}% {icon}",
-        "format-full": "{capacity}% {icon}",
-        "format-charging": "{capacity}% ",
-        "format-plugged": "{capacity}% ",
-        "format-alt": "{time} {icon}",
+        "format": "{capacity}% {icon} ",
+        "format-full": "{capacity}% {icon} ",
+        "format-charging": "{capacity}%  ",
+        "format-plugged": "{capacity}%  ",
+        // "format-alt": "{time} {icon}",
         // "format-good": "", // An empty format will hide the module
         // "format-full": "",
         "format-icons": ["", "", "", "", ""]
@@ -258,7 +258,7 @@
     "custom/power": {
         "format" : "⏻  ",
         "tooltip": false,
-        "on-click": "bash $HOME/.local/bin/power-menu"
+        "on-click": "wofi-power-menu"
 		// "menu": "on-click",
 		// "menu-file": "$HOME/.config/waybar/power_menu.xml", // Menu file in resources folder
 		// "menu-actions": {

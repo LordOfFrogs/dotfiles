@@ -5,7 +5,8 @@
 local terminal = "kitty"
 local fileManager = "dolphin"
 local menu = "wofi --show drun"
-local browser = "firefox"
+local execMenu = "wofi --show run"
+local browser = "floorp"
 
 local mainMod = "SUPER" -- Sets "Windows" key as main modifier
 
@@ -20,6 +21,7 @@ hl.bind(
 hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(fileManager))
 hl.bind(mainMod .. " + V", hl.dsp.window.float({ action = "toggle" }))
 hl.bind(mainMod .. " + space", hl.dsp.exec_cmd(menu))
+hl.bind(mainMod .. " + SHIFT + space", hl.dsp.exec_cmd(execMenu))
 hl.bind(mainMod .. " + P", hl.dsp.window.pseudo())
 hl.bind(mainMod .. " + A", hl.dsp.layout("togglesplit")) -- dwindle only
 hl.bind(mainMod .. " + B", hl.dsp.exec_cmd(browser))

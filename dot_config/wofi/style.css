@@ -1,0 +1,52 @@
+#window {
+    background-color: rgba(--wofi-rgb-color0,1);
+    border-radius: 0rem;
+    border: 2px solid rgba(--wofi-rgb-color1,1);
+    font-size: 1.6rem;
+    font-family: 'JetBrainsMono Nerd Font', 'Adwaita Mono', monospace;
+}
+#input {
+    background-color: rgba(--wofi-rgb-color0,1);
+    color: rgba(--wofi-rgb-color1,1);
+    border: 2px solid rgba(--wofi-rgb-color1,1);
+    padding: 0.8rem 1rem;
+    font-size: 1.5rem;
+    border-radius: 0;
+}
+#input:focus, #input:focus-visible, #input:active {
+    /* background: linear-gradient(
+        to right,
+        rgba(--wofi-rgb-color2,1) 0%,
+        rgba(0, 0, 0, 0) 100%
+    ); */
+    box-shadow: none;
+}
+#scroll {
+    margin-top: 3px;
+    margin-bottom: 6px;
+    margin-right: 5px;
+    margin-left: 5px;
+}
+#entry {
+    color: rgba(--wofi-rgb-color1,1);
+    background-color: rgba(--wofi-rgb-color0,1);
+    padding: 0.6rem 1rem;
+}
+#img {
+    width: 1rem;
+    margin-right: 1.0rem;
+}
+#entry:selected {
+    color: rgba(--wofi-rgb-color0, 1);
+    background: linear-gradient(
+        to right,
+        rgba(--wofi-rgb-color2, 0.5) 20%,
+        rgba(0, 0, 0, 0) 100%
+    );
+    border-radius: 0;
+    outline: none;
+}
+#text:selected {
+    color: rgba(--wofi-rgb-color3, 1);
+    font-weight: 700;
+}
