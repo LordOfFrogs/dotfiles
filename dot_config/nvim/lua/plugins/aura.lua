@@ -1,0 +1,3 @@
+return {
+  "baliestri/aura-theme",
+}

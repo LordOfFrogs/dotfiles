@@ -1,0 +1,134 @@
+{
+  "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
+  "version": 4,
+  "final_space": true,
+  "console_title_template": "{{ .Shell }} - {{ .Folder }}",
+  "async": true,
+  "blocks": [
+    {
+      "alignment": "left",
+      "segments": [
+        {
+          "background": "p:color0",
+          "foreground": "p:color10",
+          "options": {
+            "arch": "\uf303",
+            "ml4wos": "\uf303",
+            "debian": "\uf306",
+            "fedora": "\uf30a",
+            "linux": "\uf17c",
+            "macos": "\uf179",
+            "manjaro": "\uf312",
+            "opensuse": "\uf314",
+            "ubuntu": "\uf31b",
+            "windows": "\uf17a"
+          },
+          "style": "diamond",
+          "template": " {{ if .WSL }}WSL at {{ end }}{{.Icon}} ",
+          "type": "os",
+          "trailing_diamond": "\ue0b0",
+          "powerline_symbol": "\ue0b0"
+        },
+        {
+          "background": "p:color13",
+          "foreground": "p:color15",
+          "powerline_symbol": "\ue0b0",
+          "options": {
+            "folder_icon": "...",
+            "folder_separator_icon": "/",
+            "home_icon": "~",
+            "max_depth": 3,
+            "style": "agnoster_short"
+          },
+          "style": "powerline",
+          "template": "\uf07c {{ .Path }} ",
+          "type": "path"
+        },
+        {
+          "background": "p:color10",
+          "foreground": "p:color13",
+          "powerline_symbol": "\ue0b0",
+          "options": {
+            "branch_template": "{{ trunc 25 .Branch }}",
+            "fetch_status": true,
+            "fetch_upstream_icon": true
+          },
+          "style": "powerline",
+          "template": " {{ .UpstreamIcon }} {{ .HEAD }}{{if .BranchStatus }} {{ .BranchStatus }}{{ end }}{{ if .Working.Changed }} \uf044 {{ .Working.String }}{{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }} {{ end }}",
+          "type": "git"
+        },
+        {
+          "background": "p:color15",
+          "foreground": "p:color0",
+          "options": {
+            "fetch_version": false
+          },
+          "style": "diamond",
+          "template": " \ue235 {{ if .Error }}{{ .Error }}{{ else }}{{ if .Venv }}{{ .Venv }} {{ end }}{{ .Full }}{{ end }} ",
+          "trailing_diamond": "\ue0b4",
+          "type": "python",
+          "powerline_symbol": "\ue0b0",
+          "leading_powerline_symbol": "\ue0b2"
+        }
+      ],
+      "type": "prompt",
+      "newline": true
+    },
+    {
+      "alignment": "right",
+      "segments": [
+        {
+          "type": "status",
+          "style": "powerline",
+          "powerline_symbol": "\ue0b2",
+          "template": " {{ if eq .Code 0 }}\uf00c{{ else }}\uf071 {{ .Code }}{{ end }} ",
+          "foreground": "p:color0",
+          "background": "p:color15",
+          "invert_powerline": true,
+          "leading_powerline_symbol": "\ue0b6"
+        },
+        {
+          "background": "p:color10",
+          "foreground": "p:color13",
+          "powerline_symbol": "\ue0b2",
+          "options": {
+            "always_enabled": true
+          },
+          "style": "powerline",
+          "template": " {{ .FormattedMs }} ",
+          "type": "executiontime",
+          "invert_powerline": true
+        },
+        {
+          "type": "time",
+          "style": "diamond",
+          "powerline_symbol": "\ue0b2",
+          "template": " \uf017 {{ .CurrentDate | date .Format }} ",
+          "foreground": "p:color15",
+          "background": "p:color13"
+        }
+      ],
+      "type": "rprompt",
+      "newline": false,
+      "force": false
+    } 
+  ],
+  "palette": {
+    "color0": "#141218",
+    "color1": "",
+    "color2": "",
+    "color3": "",
+    "color4": "",
+    "color5": "",
+    "color6": "",
+    "color7": "",
+    "color8": "",
+    "color9": "",
+    "color10": "#d0bcfe",
+    "color11": "",
+    "color12": "",
+    "color13": "#210f47",
+    "color14": "",
+    "color15": "#e6e0e8"
+  }
+}
