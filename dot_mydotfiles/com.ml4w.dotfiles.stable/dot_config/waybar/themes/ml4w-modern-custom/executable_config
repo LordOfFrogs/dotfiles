@@ -40,5 +40,14 @@
         "custom/ml4w-welcome",
         "clock",
         "custom/exit"
-    ]
+    ],
+    "hyprland/workspaces": {
+        "persistent-workspaces": {
+            "*": 0
+        }
+    },
+    "clock": {
+        "format": "{:%a %d, %H:%M:%S}",
+        "interval": 1
+    }
 }
