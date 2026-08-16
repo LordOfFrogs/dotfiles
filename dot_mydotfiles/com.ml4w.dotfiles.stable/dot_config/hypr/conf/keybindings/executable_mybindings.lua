@@ -23,6 +23,7 @@ hl.bind(
 	hl.dsp.exec_cmd("~/.config/ml4w/settings/calculator.sh"),
 	{ description = "Open the calculator" }
 )
+hl.bind("CTRL + SHIFT + ESCAPE", hl.dsp.exec_cmd("kitty btop"), { description = "Open system monitor (btop)" })
 
 -- fr keyboard layout setup
 local is_fr = false
@@ -54,12 +55,12 @@ for i = 1, 10 do
 	if is_fr then
 		key = fr_keys[i]
 	end
-	hl.bind(mainMod .. " + " .. key, hl.dsp.focus({ workspace = i }), { description = "Focus workspace " .. i })
-	hl.bind(
-		mainMod .. " + SHIFT + " .. key,
-		hl.dsp.window.move({ workspace = i }),
-		{ description = "Move window to workspace " .. i }
-	)
+	hl.bind(mainMod .. " + " .. key, function()
+		hl.plugin.virtual_desktops.vdesk(tostring(i))
+	end, { description = "Focus workspace " .. i })
+	hl.bind(mainMod .. " + SHIFT + " .. key, function()
+		hl.plugin.virtual_desktops.movetodesk(tostring(i))
+	end, { description = "Move window to workspace " .. i })
 end
 
 -- Windows
@@ -182,6 +183,7 @@ hl.bind(
 	{ description = "Extract text from an area" }
 )
 hl.bind(mainMod .. " + CTRL + P", hl.dsp.exec_cmd("qs ipc call power toggle"), { description = "Start Power Menu" })
+hl.bind(mainMod .. " + CTRL + N", hl.dsp.exec_cmd("hyprltm-net"), { description = "Start Network Manager" })
 hl.bind(
 	mainMod .. " + SHIFT + W",
 	hl.dsp.exec_cmd("~/.config/ml4w/scripts/ml4w-wallpaper-app --random"),
@@ -300,8 +302,12 @@ hl.bind(mainMod .. " + SHIFT + S", function()
 end)
 
 -- Scroll through existing workspaces with mainMod + scroll
-hl.bind(mainMod .. " + mouse_down", hl.dsp.focus({ workspace = "e+1" }), { description = "Switch to next workspace" })
-hl.bind(mainMod .. " + mouse_up", hl.dsp.focus({ workspace = "e-1" }), { description = "Switch to previous workspace" })
+hl.bind(mainMod .. " + mouse_down", function()
+	hl.plugin.virtual_desktops.nextdesk()
+end, { description = "Switch to next workspace" })
+hl.bind(mainMod .. " + mouse_up", function()
+	hl.plugin.virtual_desktops.prevdesk()
+end, { description = "Switch to previous workspace" })
 
 -- Move/resize windows with mainMod + LMB/RMB and dragging
 hl.bind(mainMod .. " + mouse:272", hl.dsp.window.drag(), { mouse = true, description = "Move window with the mouse" })

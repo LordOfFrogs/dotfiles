@@ -14,7 +14,7 @@
     // Modules Left
     "modules-left": [
         //"custom/appmenu",
-        "hyprland/workspaces",
+        "cffi/virtual-desktops",
         //"wlr/taskbar",
         //"group/quicklinks",
         //"custom/nowplaying",        
@@ -49,5 +49,13 @@
     "clock": {
         "format": "{:%a %d, %H:%M:%S}",
         "interval": 1
+    },
+    "network": {
+        "on-click": "hyprltm-net"
+    },
+    "cffi/virtual-desktops": {
+        "module_path": "/home/tori/.config/waybar/modules/libwaybar_vd.so",
+        "format": "{name}",
+        "show_empty": false
     }
 }

@@ -74,6 +74,38 @@ window#waybar {
     box-shadow: none;
 }
 
+#waybar-vd {
+    margin: 0px 7px 0px 0px;
+    min-width: 210px;
+}
+
+#waybar-vd button {
+    padding: 0px 6px;
+    margin: 3px 3px;
+    border-radius: 8px;
+    color: @on_surface;
+    background-color: @background;
+    transition: all 0.3s ease-in-out;
+    border: 2px solid @primary;
+}
+
+#waybar-vd button.vdesk-focused {
+    color: @on_primary;
+    background: @primary;
+    border-radius: 12px;
+    transition: all 0.3s ease-in-out;
+    border-color: @primary;
+    min-width: 30px;
+}
+
+#waybar-vd button:hover {
+    color: @on_surface;
+    background: @primary_container;
+    border-radius: 15px;
+    border-color: @primary;
+    box-shadow: none;
+}
+
 /* -----------------------------------------------------
  * Tooltips
  * ----------------------------------------------------- */
