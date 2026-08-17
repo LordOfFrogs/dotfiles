@@ -160,7 +160,8 @@
         "tooltip": false
     },
     "memory": {
-        "format": "{}% "
+        "format": "{}% ",
+        "tooltip-format": "{used:.1f} G / {total:.1f} G"
     },
     "temperature": {
         "thermal-zone": 8,
@@ -194,7 +195,7 @@
         "bat": "BAT2"
     },
     "power-profiles-daemon": {
-      "format": "{icon}",
+      "format": " {icon} ",
       "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
       "tooltip": true,
       "format-icons": {
@@ -259,7 +260,7 @@
     "custom/power": {
         "format" : "⏻  ",
         "tooltip": false,
-        "on-click": "bash $HOME/.local/bin/power-menu"
+        "on-click": "wlogout"
 		// "menu": "on-click",
 		// "menu-file": "$HOME/.config/waybar/power_menu.xml", // Menu file in resources folder
 		// "menu-actions": {

@@ -19,7 +19,7 @@ hl.bind(
 	hl.dsp.exec_cmd("command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch 'hl.dsp.exit()'")
 )
 hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(fileManager))
-hl.bind(mainMod .. " + V", hl.dsp.window.float({ action = "toggle" }))
+hl.bind(mainMod .. " + F", hl.dsp.window.float({ action = "toggle" }))
 hl.bind(mainMod .. " + space", hl.dsp.exec_cmd(menu))
 hl.bind(mainMod .. " + SHIFT + space", hl.dsp.exec_cmd(execMenu))
 hl.bind(mainMod .. " + P", hl.dsp.window.pseudo())
@@ -28,6 +28,8 @@ hl.bind(mainMod .. " + B", hl.dsp.exec_cmd(browser))
 hl.bind("PRINT", hl.dsp.exec_cmd("hyprshot -zm region"))
 hl.bind("SHIFT+PRINT", hl.dsp.exec_cmd("hyprshot -m output"))
 hl.bind(mainMod .. " + SHIFT + C", hl.dsp.exec_cmd("swaync-client -C"))
+hl.bind(mainMod .. " + V", hl.dsp.exec_cmd("kitty --class clipse -e 'clipse'"))
+hl.bind(mainMod .. " + CTRL + L", hl.dsp.exec_cmd("hyprlock"))
 
 -- Move focus with mainMod + arrows/hjkl
 hl.bind(mainMod .. " + left", hl.dsp.focus({ direction = "left" }))
@@ -112,3 +114,5 @@ hl.bind("XF86AudioNext", hl.dsp.exec_cmd("playerctl next"), { locked = true })
 hl.bind("XF86AudioPause", hl.dsp.exec_cmd("playerctl play-pause"), { locked = true })
 hl.bind("XF86AudioPlay", hl.dsp.exec_cmd("playerctl play-pause"), { locked = true })
 hl.bind("XF86AudioPrev", hl.dsp.exec_cmd("playerctl previous"), { locked = true })
+
+hl.bind("XF86PowerOff", hl.dsp.exec_cmd("pidof wlogout || wlogout"))

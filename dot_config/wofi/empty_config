@@ -6,3 +6,4 @@ key_expand=Tab
 single_click=true
 color=.config/wofi/colors
 prompt=
+pre_display_exec=true

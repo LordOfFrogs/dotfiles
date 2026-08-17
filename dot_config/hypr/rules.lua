@@ -100,3 +100,11 @@ hl.window_rule({
 	move = "20 monitor_h-120",
 	float = true,
 })
+hl.window_rule({
+	match = { class = "clipse" },
+	float = true,
+})
+hl.window_rule({
+	match = { class = "vlc" },
+	nearest_neighbor = true,
+})
