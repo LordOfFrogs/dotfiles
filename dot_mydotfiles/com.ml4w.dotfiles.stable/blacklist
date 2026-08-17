@@ -1,0 +1,12 @@
+.config/hypr/conf/monitors.conf
+.config/hypr/conf/decorations/custom.lua
+.config/hypr/conf/keybindings/mybindings.lua
+.config/hypr/conf/windowrules/myrules.lua
+.config/hypr/conf/hypridle.conf
+.config/ml4w/wallpapers/
+.config/ohmyposh/velvet-30.omp.json
+.config/qt6ct/colors/catppuccin-mocha-mauve.conf
+.config/rofi/themes/catppuccin-default.rasi
+.config/rofi/themes/catppuccin-mocha.rasi
+.config/waybar/themes/ml4w-modern-custom/
+.config/zshrc/20-customization
