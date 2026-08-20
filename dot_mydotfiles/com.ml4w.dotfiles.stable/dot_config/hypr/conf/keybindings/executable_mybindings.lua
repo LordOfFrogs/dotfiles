@@ -24,6 +24,8 @@ hl.bind(
 	{ description = "Open the calculator" }
 )
 hl.bind("CTRL + SHIFT + ESCAPE", hl.dsp.exec_cmd("kitty btop"), { description = "Open system monitor (btop)" })
+hl.bind(mainMod .. " + SHIFT + C", hl.dsp.exec_cmd("swaync-client -C"), { description = "Clear notifications" })
+hl.bind(mainMod .. " + O", hl.dsp.exec_cmd("obsidian"))
 
 -- fr keyboard layout setup
 local is_fr = false
@@ -81,7 +83,7 @@ hl.bind(
 	{ description = "Toggle Fullscreen" }
 )
 hl.bind(
-	mainMod .. " + M",
+	mainMod .. " + SHIFT + M",
 	hl.dsp.window.fullscreen({ mode = "maximized", action = "toggle" }),
 	{ description = "Toggle Maximize Window" }
 )
@@ -244,11 +246,7 @@ hl.bind(
 	hl.dsp.exec_cmd("~/.config/waybar/themeswitcher.sh"),
 	{ description = "Open waybar theme switcher" }
 )
-hl.bind(
-	mainMod .. " + SHIFT + M",
-	hl.dsp.exec_cmd("~/.config/ml4w/scripts/ml4w-toggle-theme"),
-	{ description = "Toggle between light and dark mode" }
-)
+hl.bind(mainMod .. " + M", hl.dsp.exec_cmd("proton-mail"), { description = "Opens Mail Client" })
 hl.bind(
 	mainMod .. " + CTRL + S",
 	hl.dsp.exec_cmd("qs ipc call sidebar toggle"),

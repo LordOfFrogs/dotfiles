@@ -4,6 +4,9 @@
   "final_space": true,
   "console_title_template": "{{ .Shell }} - {{ .Folder }}",
   "async": true,
+  "transient_prompt": {
+    "template": "{{ if .Interrupted }}<red>^C </>{{ end }}{{ .PWD }} \u276f "
+  },
   "blocks": [
     {
       "alignment": "left",
@@ -23,11 +26,9 @@
             "ubuntu": "\uf31b",
             "windows": "\uf17a"
           },
-          "style": "diamond",
+          "style": "powerline",
           "template": " {{ if .WSL }}WSL at {{ end }}{{.Icon}} ",
-          "type": "os",
-          "trailing_diamond": "\ue0b0",
-          "powerline_symbol": "\ue0b0"
+          "type": "os"
         },
         {
           "background": "p:color13",
@@ -41,7 +42,7 @@
             "style": "agnoster_short"
           },
           "style": "powerline",
-          "template": "\uf07c {{ .Path }} ",
+          "template": " \uf07c {{ .Path }} ",
           "type": "path"
         },
         {

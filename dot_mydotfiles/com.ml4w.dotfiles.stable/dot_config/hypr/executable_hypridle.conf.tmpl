@@ -8,8 +8,8 @@ general {
 {{- if eq .chassis "laptop" }}
 listener {
     timeout = 480                                # 8min.
-    on-timeout = brightnessctl -s set 10         # set monitor backlight to minimum, avoid 0 on OLED monitor.
-    on-resume = brightnessctl -r                 # monitor backlight restore.
+    on-timeout = tlp-stat -m | grep -q "BAT" && brightnessctl -s set 10         # set monitor backlight to minimum, avoid 0 on OLED monitor.
+    on-resume = tlp-stat -m | grep -q "BAT" && brightnessctl -r                 # monitor backlight restore.
 }
 
 # turn off keyboard backlight, comment out this section if you dont have a keyboard backlight.
@@ -26,13 +26,13 @@ listener {
 
 listener {
     timeout = 660                                                     # 11min
-    on-timeout = hyprctl dispatch 'hl.dsp.dpms({ action = "disable" })'                            # screen off when timeout has passed
-    on-resume = hyprctl dispatch 'hl.dsp.dpms({ action = "enable" })' && brightnessctl -r          # screen on when activity is detected after timeout has fired.
+    on-timeout = tlp-stat -m | grep -q "BAT" && hyprctl dispatch 'hl.dsp.dpms({ action = "disable" })'                            # screen off when timeout has passed
+    on-resume = tlp-stat -m | grep -q "BAT" && hyprctl dispatch 'hl.dsp.dpms({ action = "enable" })' && brightnessctl -r          # screen on when activity is detected after timeout has fired.
 }
 
 listener {
     timeout = 1800                                # 30min
-    on-timeout = systemctl suspend                # suspend pc
+    on-timeout = tlp-stat -m | grep -q "BAT" && systemctl suspend                # suspend pc
 }
 {{- else }}
 listener {
