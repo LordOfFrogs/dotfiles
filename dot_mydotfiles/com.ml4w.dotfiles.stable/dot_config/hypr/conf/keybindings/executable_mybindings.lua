@@ -18,11 +18,7 @@ hl.bind(
 	hl.dsp.exec_cmd("rofimoji -f all --selector-args='-config ~/.config/rofi/config-compact.rasi'"),
 	{ description = "Open the emoji picker" }
 )
-hl.bind(
-	mainMod .. " + C",
-	hl.dsp.exec_cmd("~/.config/ml4w/settings/calculator.sh"),
-	{ description = "Open the calculator" }
-)
+hl.bind(mainMod .. " + C", hl.dsp.exec_cmd("code"), { description = "Open code editor" })
 hl.bind("CTRL + SHIFT + ESCAPE", hl.dsp.exec_cmd("kitty btop"), { description = "Open system monitor (btop)" })
 hl.bind(mainMod .. " + SHIFT + C", hl.dsp.exec_cmd("swaync-client -C"), { description = "Clear notifications" })
 hl.bind(mainMod .. " + O", hl.dsp.exec_cmd("obsidian"))
