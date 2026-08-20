@@ -30,7 +30,7 @@
         "custom/updates",
         "pulseaudio",
         //"backlight",
-        "bluetooth",
+        //"bluetooth",
         "network",
         "battery",
         "group/hardware",
