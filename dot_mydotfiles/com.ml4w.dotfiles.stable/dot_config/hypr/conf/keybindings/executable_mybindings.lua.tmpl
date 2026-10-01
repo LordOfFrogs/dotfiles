@@ -53,12 +53,17 @@ for i = 1, 10 do
 	if is_fr then
 		key = fr_keys[i]
 	end
+    {{- if eq .chassis "laptop" }}
+	hl.bind(mainMod .. " + " .. key, hl.dsp.focus({ workspace = i }), { description = "Focus workspace " .. i })
+	hl.bind(mainMod .. " + SHIFT + " .. key, hl.dsp.window.move({ workspace = i }), { description = "Move window to workspace " .. i })
+    {{- else }}
 	hl.bind(mainMod .. " + " .. key, function()
 		hl.plugin.virtual_desktops.vdesk(tostring(i))
 	end, { description = "Focus workspace " .. i })
 	hl.bind(mainMod .. " + SHIFT + " .. key, function()
 		hl.plugin.virtual_desktops.movetodesk(tostring(i))
 	end, { description = "Move window to workspace " .. i })
+    {{- end }}
 end
 
 -- Windows
@@ -162,7 +167,7 @@ hl.bind(
 )
 hl.bind(
 	"PRINT",
-	hl.dsp.exec_cmd("~/.config/hypr/scripts/screenshot.sh --instant-area"),
+	hl.dsp.exec_cmd("~/.config/hypr/scripts/screenshot.sh --instant-area --copy"),
 	{ description = "Take an instant area screenshot" }
 )
 hl.bind(
@@ -201,6 +206,11 @@ hl.bind(
 	mainMod .. " + SPACE",
 	hl.dsp.exec_cmd("~/.config/hypr/scripts/launcher.sh"),
 	{ description = "Open application launcher" }
+)
+hl.bind(
+    mainMod .. " + X",
+    hl.dsp.exec_cmd("rofi -show calc -modi calc -no-show-match -no-sort"),
+    { description = "Open calculator" }
 )
 hl.bind(
 	mainMod .. " + CTRL + K",
@@ -260,13 +270,18 @@ hl.bind(
 -- )
 hl.bind(
 	mainMod .. " + ALT + G",
-	hl.dsp.exec_cmd("~/.config/hypr/scripts/gamemode.sh"),
+    hl.dsp.exec_cmd("~/.config/hypr/scripts/gamemode.sh"),
 	{ description = "Toggle game mode" }
 )
 hl.bind(
 	mainMod .. " + CTRL + L",
 	hl.dsp.exec_cmd("~/.config/ml4w/scripts/ml4w-power -l"),
 	{ description = "Lock Screen" }
+)
+hl.bind(
+    "XF86PowerOff",
+    hl.dsp.exec_cmd("qs ipc call power open"),
+    { description = "Open power menu" }
 )
 hl.bind(
 	mainMod .. " + SHIFT + H",
@@ -296,13 +311,17 @@ hl.bind(mainMod .. " + SHIFT + S", function()
 end)
 
 -- Scroll through existing workspaces with mainMod + scroll
+{{- if eq .chassis "laptop" }}
+hl.bind(mainMod .. " + mouse_down", hl.dsp.focus({ workspace = "e+1" }), { description = "Switch to next workspace" })
+hl.bind(mainMod .. " + mouse_up", hl.dsp.focus({ workspace = "e-1" }), { description = "Switch to previous workspace" })
+{{- else }}
 hl.bind(mainMod .. " + mouse_down", function()
 	hl.plugin.virtual_desktops.nextdesk()
 end, { description = "Switch to next workspace" })
 hl.bind(mainMod .. " + mouse_up", function()
 	hl.plugin.virtual_desktops.prevdesk()
 end, { description = "Switch to previous workspace" })
-
+{{- end }}
 -- Move/resize windows with mainMod + LMB/RMB and dragging
 hl.bind(mainMod .. " + mouse:272", hl.dsp.window.drag(), { mouse = true, description = "Move window with the mouse" })
 hl.bind(
@@ -334,12 +353,12 @@ hl.bind(
 )
 hl.bind(
 	"XF86MonBrightnessUp",
-	hl.dsp.exec_cmd("brightnessctl -e4 -n2 set 5%+"),
+	hl.dsp.exec_cmd("brightnessctl -e4 -n2 -d intel_backlight set 5%+"),
 	{ locked = true, repeating = true, description = "Increase brightness" }
 )
 hl.bind(
 	"XF86MonBrightnessDown",
-	hl.dsp.exec_cmd("brightnessctl -e4 -n2 set 5%-"),
+	hl.dsp.exec_cmd("brightnessctl -e4 -n2 -d intel_backlight set 5%-"),
 	{ locked = true, repeating = true, description = "Decrease brightness" }
 )
 

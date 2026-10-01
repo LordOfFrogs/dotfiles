@@ -580,7 +580,7 @@ window#waybar.empty #window {
     animation-name: blink;
     animation-duration: 0.5s;
     animation-timing-function: linear;
-    animation-iteration-count: infinite;
+    animation-iteration-count: 10;
     animation-direction: alternate;
 }
 

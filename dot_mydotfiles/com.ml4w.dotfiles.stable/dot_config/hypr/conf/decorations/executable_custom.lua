@@ -6,9 +6,9 @@
 hl.config({
 	decoration = {
 		rounding = 10,
-		active_opacity = 0.8,
-		inactive_opacity = 0.6,
-		fullscreen_opacity = 0.8,
+		active_opacity = 0.9,
+		inactive_opacity = 0.75,
+		fullscreen_opacity = 0.9,
 
 		blur = {
 			enabled = true,
